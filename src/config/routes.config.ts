@@ -22,7 +22,7 @@ export const RoutesConfig = Object.freeze<Record<string, Route>>({
     activeClassName: 'is-active',
     icon: 'home',
     metaInfo: {
-      title: 'Home | ReactSeoFriendlySpaTemplate',
+      title: 'HCI Community Analytics',
       description: 'Home page description - limit of 160 characters (try for 150-155).'
     }
   },
@@ -33,7 +33,7 @@ export const RoutesConfig = Object.freeze<Record<string, Route>>({
     activeClassName: 'is-active',
     icon: 'info',
     metaInfo: {
-      title: 'About | ReactSeoFriendlySpaTemplate',
+      title: 'About | HCI Community Analytics',
       description: 'About page description - limit of 160 characters (try for 150-155).'
     }
   }

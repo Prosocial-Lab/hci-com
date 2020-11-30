@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer: React.FC = () => (
   <footer className='footer'>
-    <div className='buttons'>
+    {/* <div className='buttons'>
       <a
         target='_blank'
         aria-label='GitHub'
@@ -27,8 +27,8 @@ const Footer: React.FC = () => (
       >
         <FontAwesomeIcon icon={['fab', 'medium-m']} />
       </a>
-    </div>
-    <div className='content'>ReactSeoFriendlySpaTemplate.com &copy; 2019</div>
+    </div> */}
+    <div className='content'>insert CSE and HCDE logo</div>
   </footer>
 );
 

@@ -12,12 +12,7 @@ const NavBar: React.FC = () => (
   >
     <div className='navbar-wrapper'>
       <div className='brand-wrapper'>
-        <ReactSeoLogoSvg
-          height='68'
-          width='170'
-          aria-hidden={true}
-          title='react-seo-template'
-        />
+        Insert Logo Here
       </div>
       <div className='navbar-routes'>
         <NavLink
@@ -36,17 +31,7 @@ const NavBar: React.FC = () => (
         >
           <span>{RoutesConfig.About.displayName}</span>
         </NavLink>
-        <div className='seperator' />
-        <a
-          target='_blank'
-          aria-label='GitHub'
-          className='navbar-item'
-          rel='noopener noreferrer'
-          href='https://github.com/based-ghost'
-        >
-          <span>GitHub</span>
-          <FontAwesomeIcon icon='external-link-alt' />
-        </a>
+      
       </div>
     </div>
   </nav>
