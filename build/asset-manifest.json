@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hci-com/static/css/main.adea3108.chunk.css",
+    "main.js": "/hci-com/static/js/main.059e55a5.chunk.js",
+    "main.js.map": "/hci-com/static/js/main.059e55a5.chunk.js.map",
+    "runtime-main.js": "/hci-com/static/js/runtime-main.574e16fb.js",
+    "runtime-main.js.map": "/hci-com/static/js/runtime-main.574e16fb.js.map",
+    "static/js/2.b0d4bcd5.chunk.js": "/hci-com/static/js/2.b0d4bcd5.chunk.js",
+    "static/js/2.b0d4bcd5.chunk.js.map": "/hci-com/static/js/2.b0d4bcd5.chunk.js.map",
+    "index.html": "/hci-com/index.html",
+    "static/css/main.adea3108.chunk.css.map": "/hci-com/static/css/main.adea3108.chunk.css.map",
+    "static/js/2.b0d4bcd5.chunk.js.LICENSE.txt": "/hci-com/static/js/2.b0d4bcd5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.574e16fb.js",
+    "static/js/2.b0d4bcd5.chunk.js",
+    "static/css/main.adea3108.chunk.css",
+    "static/js/main.059e55a5.chunk.js"
+  ]
+}
