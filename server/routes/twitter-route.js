@@ -12,5 +12,11 @@ const router = express.Router()
 // this means that '/all' translates to '/twitter/all'
 router.get('/all', twitterRoutes.usersAll)
 
+router.get('/userWhereID/:id', twitterRoutes.userWhereID)
+
+router.get('/communityAll', twitterRoutes.communityAll)
+
+router.get('/snapshotsWhereID/:id', twitterRoutes.snapshotsWhereID)
+
 // Export router
 module.exports = router
