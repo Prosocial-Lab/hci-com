@@ -28,7 +28,13 @@ const Footer: React.FC = () => (
         <FontAwesomeIcon icon={['fab', 'medium-m']} />
       </a>
     </div> */}
-    <div className='content'>insert CSE and HCDE logo</div>
+    <div className='content'>
+      <img src = "hci-com/uwcse.png" width= "350"></img>
+      <img src = "hci-com/uwhcde.png" width= "300"></img>
+    </div>
+
+
+
   </footer>
 );
 

@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import Box from '@material-ui/core/Box';
+import Button from 'react-bootstrap/Button'
 import { FeatureList } from './components';
 import { MetaInfo } from '../../components';
 import { RoutesConfig } from '../../config/routes.config';
@@ -155,133 +157,43 @@ const Home: React.FC = () => {
       <MetaInfo {...RoutesConfig.Home.metaInfo} />
       
       <section className='container dashboard-content'>
-      <div className='columns'>
+        <div className='columns'>
           <div className='column'>
-            <p className='title'>Lorem Ipsum</p>
+            <p className='title'>HCI COM</p>
+            <p className='subtitle'>Twitter Science Communication Research</p>
             <div className='content'>
-              Lorem ipsum dolor sit amet, alia appareat usu id, has legere facilis
-              in. Nam inani malorum epicuri id, illud eleifend reformidans nec cu.
-              Stet meis rebum quo an, ad recusabo praesent reprimique duo, ne
-              delectus expetendis philosophia nam. Mel lorem recusabo ex, vim
-              congue facilisis eu, id vix oblique mentitum. Vide aeterno duo ei.
-              Qui ne urbanitas conceptam deseruisse, commune philosophia eos no.
-              Id ullum reprimique qui, vix ei malorum assueverit contentiones. Nec
-              facilis dignissim efficiantur ad, tantas tempor nam in. Per feugait
-              atomorum ut. Novum appareat ei usu, an usu omnium concludaturque. Et
-              nam latine mentitum, impedit explicari ullamcorper ut est, vis ipsum
-              viderer ei. Porro essent eu per, ut tantas dissentias vim. Dicant
-              regione argumentum vis id, adipisci accusata postulant at vix.
-              Adipisci vituperata ea duo, eu summo detracto mei, et per option
-              periculis. Eos laudem vivendo ex.
+            talk about in a paragraph what the research was about <br/>
+
+            how this research is paving way to this new “site” that aims to define and quantify the HCI community on twitter <br/>
+
+            give some context information to how the data was pulled and coded  <br/>
+
+            then describe the current pool of HCI researchers volunteers, i assume, have a CTA to join the HCI researcher twitter community pool <br/>
             </div>
           </div>
           <div className = 'column'>
-            <img src = 'https://miro.medium.com/max/2978/1*rmq7bd3GFjcwfXtkrBQaPQ.png'></img>
-          </div>
-        </div>
-        <hr/>
-
-        <div className='columns'>
-          <div className='column'>
-            <p className='subtitle'>Community Followers</p>
-            <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-                <img src='https://i.imgur.com/ZWMG58P.png'></img>
-              </p>
-              
-            </div>
-          </div>
-          <div className='column'>
-            <p className='subtitle'>Average Followers</p>
-            <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-                <img src='https://i.imgur.com/W7ABxos.png'></img>
-              </p>
-            </div>
-          </div>
-          <div className='column'>
-            <p className='subtitle'>Average Downstream Audience</p>
-            <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-                <img src='https://i.imgur.com/VWjwhus.png'></img>
-              </p>
-            </div>
+            <img src = "hci-com/graph.png"></img>
           </div>
         </div>
 
-        <hr />
+        <Box
+          color="primary.main"
+          bgcolor="background.paper"
+          fontFamily="h6.fontFamily"
+          fontSize={{ xs: 'h6.fontSize', sm: 'h4.fontSize', md: 'h3.fontSize' }}
+          p={{ xs: 2, sm: 3, md: 4 }}
+        >
+          @material-ui/system
+        </Box>
         
         <div className='columns'>
           <div className='column'>
-            <p className='subtitle'>Follower Breakdowns</p>
-              <div className='content'>
-                <div className='columns'>
-                  <div className = 'column'>
-                    My Followers
-                    <img src ='https://i.imgur.com/UuBv2ob.png'></img>
-                  </div>
-                  
-                  <div className = 'column'>
-                    My Downstream Audience
-                    <img src = 'https://i.imgur.com/QJ04ATd.png'></img>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div className='column'>
-            <p className='subtitle'>Tweet Engagement</p>
+            <p className='title'>HCI COM</p>
             <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-                <img src='https://i.imgur.com/tzr4R8C.png'></img>
-              </p>
-            </div>
-          </div>
-        
-        </div>
-        <hr />
-
-        <div className='columns'>
-          <div className='column'>
-            <p className='subtitle'>My Tweets</p>
-            <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-              </p>
-              
+            HAVE A NICE CALL TO ACTION HERE ABOUT JOINING THE HCI COM COMMUNITY POOL – WANT TO SEE MORE? STAY UP TO DATE? BE A PART OF THE COMMUNITY TO SEE YOUR STATS IN THE COMMUNITY INFORMATION, SHARE TO INFORM YOUR COMMUNITY
             </div>
           </div>
         </div>
-
-        <hr/>
-
-        <div className='columns'>
-          <div className='column'>
-            <p className='subtitle'>My Followers</p>
-            <div className='content'>
-              <p>
-                Insert Waffle Chart and info here
-              </p>
-              
-            </div>
-          </div>
-        </div>
-        <hr />
-
-      <div className='columns'>
-        <div className='column'>
-          <p className='subtitle'>Test</p>
-          <div className='content' id='test'>
-            Blah {CSVToArray("one, two, three", ",").length} Blah {x}
-            Some users (this doesn't update yet):
-            {u}
-          </div>
-        </div>
-      </div>
-
       </section>
     </div>
   );
