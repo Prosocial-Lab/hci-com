@@ -19,7 +19,9 @@ const App: React.FC = () => (
         component={withTracker(About)}
         exact={RoutesConfig.About.exact}
       />
-      <Route component={NotFound} />
+      <Route 
+        component={NotFound} 
+      />
     </Switch>
   </Layout>
 );

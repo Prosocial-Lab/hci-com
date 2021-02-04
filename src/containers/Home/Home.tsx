@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from 'react-bootstrap/Button'
-import { FeatureList } from './components';
 import { MetaInfo } from '../../components';
 import { RoutesConfig } from '../../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureInfoConfig, FeatureInfo } from '../../config/features.config';
 import axios from 'axios'
+import { CommunityStats, IndividualStats, Researchers } from './components';
 
 
 const Home: React.FC = () => {
@@ -176,16 +176,10 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <Box
-          color="primary.main"
-          bgcolor="background.paper"
-          fontFamily="h6.fontFamily"
-          fontSize={{ xs: 'h6.fontSize', sm: 'h4.fontSize', md: 'h3.fontSize' }}
-          p={{ xs: 2, sm: 3, md: 4 }}
-        >
-          @material-ui/system
-        </Box>
-        
+        <CommunityStats/>
+        {/* <Researchers/> */}
+        <IndividualStats/>
+
         <div className='columns'>
           <div className='column'>
             <p className='title'>HCI COM</p>

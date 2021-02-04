@@ -37,4 +37,5 @@ export const RoutesConfig = Object.freeze<Record<string, Route>>({
       description: 'About page description - limit of 160 characters (try for 150-155).'
     }
   }
+  
 });
