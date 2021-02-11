@@ -8,7 +8,6 @@ import { FeatureInfoConfig, FeatureInfo } from '../../config/features.config';
 import axios from 'axios'
 import { CommunityStats, IndividualStats, Researchers } from './components';
 
-
 const Home: React.FC = () => {
   const featureList = useMemo<FeatureInfo[]>(() => {
     return Object.keys(FeatureInfoConfig).map((key) => FeatureInfoConfig[key]);

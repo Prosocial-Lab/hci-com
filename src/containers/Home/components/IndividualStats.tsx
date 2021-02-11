@@ -1,25 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
+import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
+import CardColumns from 'react-bootstrap/CardColumns';
 
-const IndividualStats = (props) => (
+const Title = styled.p`
+    &&& {
+    padding: 1em;
+    font-size: 20px;
+    font-weight:bold;
+}`
+
+const Subtitle = styled.p`
+    &&& {
+    padding: 2em;
+    font-size: 16px;
+}`
+
+const CommunityStats = (props) => (
 <div>
-    <Card border="dark">
-        <Card.Header>
-            <br/>
-            <p className='subtitle'>Individual Profile Statistics</p>
-            <br/>
-        </Card.Header>
+    <Card>
+        <Title>My Statistics</Title>
+            <div className='columns'>
+                <div className='column'>
+                    <Subtitle>My Followers</Subtitle>
 
-        <Card.Body>
-        <Card.Text>
-            
-        </Card.Text>
-        </Card.Body>
+                    
+                </div>
+                <div className='column'>
+                    <Subtitle>My Downstream Audience</Subtitle>
+                </div>
+            </div>
     </Card>
-    <br/>
+
 </div>
 );
 
 
-export default IndividualStats;
+export default CommunityStats;
