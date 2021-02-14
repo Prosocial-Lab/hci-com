@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import {CommunityWaffle} from "../components";
+import {TweetsWaffle} from "../components";
 
 const Title = styled.p`
     &&& {
@@ -18,17 +23,19 @@ const Subtitle = styled.p`
     
 
 const CommunityStats = (props) => (
+
 <div>
     <Card>
         <Title>Community Statistics</Title>
             <div className='columns'>
                 <div className='column'>
                     <Subtitle>Community Followers</Subtitle>
-
+                    <CommunityWaffle/>
                     
                 </div>
                 <div className='column'>
                     <Subtitle>Tweet Content</Subtitle>
+                    <TweetsWaffle/>
                 </div>
             </div>
 
