@@ -6,15 +6,17 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
-import axios from 'axios'
 
 am4core.useTheme(am4themes_animated);
 
-function TweetsWaffle(props) {
-  const chart2 = useRef(null);
+function MyWaffle(props) {
+  const chart = useRef(null);
+
+  var rs = 3600
+  var nrs = 6400
 
   useLayoutEffect(() => {
-    let x = am4core.create("chart2div", am4charts.XYChart);
+    let x = am4core.create("chartdivmy", am4charts.XYChart);
 
     x.paddingRight = 20;
     x.paddingLeft = 20;
@@ -25,13 +27,13 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 
 // Chart
-let chart2 = am4core.create( "chart2div", am4charts.XYChart );
-chart2.hiddenState.properties.opacity = 0; // this creates initial fade-in
+let chart = am4core.create( "chartdivmy", am4charts.XYChart );
+chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 //chart.colors.step = 2;
-chart2.colors.list = [am4core.color( "#98a2df" ), am4core.color( "#e96b6a" ), am4core.color("#a2df98")]
+chart.colors.list = [am4core.color( "#98a2df" ), am4core.color( "#e96b6a" ), am4core.color("#a2df98")]
 
 // X axis
-let xAxis = chart2.xAxes.push( new am4charts.CategoryAxis() );
+let xAxis = chart.xAxes.push( new am4charts.CategoryAxis() );
 xAxis.dataFields.category = "x";
 xAxis.renderer.grid.template.location = 0;
 xAxis.renderer.minGridDistance = 10;
@@ -39,7 +41,7 @@ xAxis.renderer.labels.template.disabled = true;
 xAxis.data = [{ x: "1" }, { x: "2" }, { x: "3" }, { x: "4" }, { x: "5" }, { x: "6" }, { x: "7" }, { x: "8" }, { x: "9" }, { x: "10" }];
 
 // Y axis
-let yAxis = chart2.yAxes.push( new am4charts.CategoryAxis() );
+let yAxis = chart.yAxes.push( new am4charts.CategoryAxis() );
 yAxis.renderer.labels.template.disabled = true;
 yAxis.renderer.grid.template.location = 0;
 yAxis.renderer.minGridDistance = 10;
@@ -47,11 +49,11 @@ yAxis.dataFields.category = "y";
 yAxis.data = [{ y: "1" }, { y: "2" }, { y: "3" }, { y: "4" }, { y: "5" }, { y: "6" }, { y: "7" }, { y: "8" }, { y: "9" }, { y: "10" }];
 
 // Legend
-chart2.legend = new am4charts.Legend();
+chart.legend = new am4charts.Legend();
 
 // Create series
 function createSeries(name) {
-  let series = chart2.series.push( new am4charts.ColumnSeries() );
+  let series = chart.series.push( new am4charts.ColumnSeries() );
   series.dataFields.categoryX = "x";
   series.dataFields.categoryY = "y";
   series.sequencedInterpolation = true;
@@ -71,7 +73,7 @@ function createSeries(name) {
   return series;
 }
 
-let series1 = createSeries("Paper");
+let series1 = createSeries("Researchers");
 series1.data = [
   { x: "1", y: "1" },
   { x: "1", y: "2" },
@@ -91,12 +93,6 @@ series1.data = [
   { x: "2", y: "5" },
   { x: "2", y: "6" },
   { x: "2", y: "7" },
-  
-
-];
-
-let series2 = createSeries("Blog");
-series2.data = [
   { x: "2", y: "8" },
   { x: "2", y: "9" },
   { x: "2", y: "10" },
@@ -118,17 +114,11 @@ series2.data = [
   { x: "4", y: "4" },
   { x: "4", y: "5" },
   { x: "4", y: "6" },
-  
-];
-
-let series3 = createSeries("None");
-series3.data = [
-  
   { x: "4", y: "7" },
   { x: "4", y: "8" },
   { x: "4", y: "9" },
   { x: "4", y: "10" },
-  
+
   { x: "5", y: "1" },
   { x: "5", y: "2" },
   { x: "5", y: "3" },
@@ -150,6 +140,12 @@ series3.data = [
   { x: "6", y: "8" },
   { x: "6", y: "9" },
   { x: "6", y: "10" },
+
+];
+
+let series2 = createSeries("Non-Researchers");
+series2.data = [
+  
 
   { x: "7", y: "1" },
   { x: "7", y: "2" },
@@ -196,33 +192,13 @@ series3.data = [
   { x: "10", y: "10" },
 ];
 
-axios
-.get(`http://localhost:4001/twitter/communityAll`)
-.then(response => {
-  // Update the books state
-  var com = response.data;
-  var coms:object[] = [];
-  var num1 = new Number(0)
-  num1 = com[com.length -1]['paper_tweets']
-  series1.name = "Paper: " + num1.toString();
-  
-  var num2 = new Number(0)
-  num2 = com[com.length -1]['blog_tweets']
-  series2.name = "Blog: " + num2.toString();
-  
-  var num3 = new Number(0)
-  num3 = com[com.length -1]['total_tweets'] - (num1.valueOf() + num2.valueOf())
-  series3.name = "None: " + num3.toString();
-})
-.catch(error => console.error(`There was an error retrieving the user list: ${error}`))
-
   }, []);
 
   return (
     <div>
-        <div id="chart2div" style={{ width: "50%", height: "300px" }}></div>
+        <div id="chartdivmy" style={{ width: "50%", height: "300px" }}></div>
     </div>
     
   );
 }
-export default TweetsWaffle;
+export default MyWaffle;

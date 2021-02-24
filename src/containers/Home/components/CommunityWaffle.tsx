@@ -5,6 +5,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
+import axios from 'axios'
 import Card from 'react-bootstrap/Card';
 
 am4core.useTheme(am4themes_animated);
@@ -191,6 +192,21 @@ series2.data = [
   { x: "10", y: "9" },
   { x: "10", y: "10" },
 ];
+
+axios
+.get(`http://localhost:4001/twitter/communityAll`)
+.then(response => {
+  // Update the books state
+  var com = response.data;
+  var coms:object[] = [];
+  var num = new Number(0)
+  num = com[com.length -1]['researchers']
+  series1.name = "Researchers: " + num.toString();
+
+  num = com[com.length -1]['non_researchers']
+  series2.name = "Non-researchers: " + num.toString();
+})
+.catch(error => console.error(`There was an error retrieving the user list: ${error}`))
 
   }, []);
 

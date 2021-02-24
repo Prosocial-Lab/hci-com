@@ -7,6 +7,8 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import {CommunityWaffle} from "../components";
 import {TweetsWaffle} from "../components";
+import CommunityLine from './CommunityLine';
+import CommunityEngagement from './CommunityEngagement';
 
 const Title = styled.p`
     &&& {
@@ -43,9 +45,11 @@ const CommunityStats = (props) => (
             <div className='columns'>
                 <div className='column'>
                     <Subtitle>Follower Growth</Subtitle>
+                    <CommunityLine/>
                 </div>
                 <div className='column'>
                     <Subtitle>Tweet Engagements</Subtitle>
+                    <CommunityEngagement/>
                 </div>
             </div>
     </Card>
