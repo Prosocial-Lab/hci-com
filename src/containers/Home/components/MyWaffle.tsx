@@ -6,8 +6,56 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios'
+
+var user_id = 634739719;
 
 am4core.useTheme(am4themes_animated);
+
+function WaffleProportion(n: Number, m: Number){
+  var data1 = []
+  var data2 = []
+  var x_val = n.valueOf();
+  var y_val = m.valueOf();
+  var tot = x_val + y_val;
+  var num1 = x_val / tot;
+  var num2 = tot - num1;
+
+  var s1 = num1.toFixed();
+  var s2 = num2.toFixed();
+
+  var r1 = parseInt(s1);
+  var r2 = parseInt(s2);
+
+  var row = 1
+  var col = 1
+
+  for (let i = 0; i < r1; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data1.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1; i < 100; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data2.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  return([data1, data2]);
+}
 
 function MyWaffle(props) {
   const chart = useRef(null);
@@ -191,6 +239,30 @@ series2.data = [
   { x: "10", y: "9" },
   { x: "10", y: "10" },
 ];
+
+//!!! the problem is there are no users in the db right now
+//the other problem is the waffle itself doesn't change
+var a = new Number(100);
+var b = new Number(13);
+console.log("waffle proportion is...")
+console.log(WaffleProportion(a,b));
+
+axios
+.get(`http://localhost:4001/twitter/userWhereID/${user_id}`)
+.then(response => {
+  var com = response.data;
+  var coms:object[] = [];
+  var num = new Number(0)
+  num = com['followers_r']
+  console.log(com)
+  console.log(num)
+  series1.name = "Researchers: " + num.toString();
+
+  num = com['followers_n']
+  series2.name = "Non-researchers: " + num.toString();
+})
+.catch(error => console.error(`There was an error retrieving the user list: ${error}`))
+
 
   }, []);
 

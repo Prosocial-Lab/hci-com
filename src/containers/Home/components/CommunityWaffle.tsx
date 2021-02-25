@@ -10,6 +10,51 @@ import Card from 'react-bootstrap/Card';
 
 am4core.useTheme(am4themes_animated);
 
+function WaffleProportion(n: Number, m: Number){
+  var data1 = []
+  var data2 = []
+  var x_val = n.valueOf();
+  var y_val = m.valueOf();
+  var tot = x_val + y_val;
+  var num1 = x_val / tot;
+  var num2 = 1 - num1;
+
+  var s1 = (num1 * 100).toFixed();
+  var s2 = (num2 * 100).toFixed();
+
+  var r1 = parseInt(s1);
+  var r2 = parseInt(s2);
+
+  var row = 1
+  var col = 1
+
+  for (let i = 0; i < r1; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data1.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1; i < 100; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data2.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  return([data1, data2]);
+}
+
 function CommunityWaffle(props) {
   const chart = useRef(null);
 
@@ -199,12 +244,19 @@ axios
   // Update the books state
   var com = response.data;
   var coms:object[] = [];
-  var num = new Number(0)
-  num = com[com.length -1]['researchers']
-  series1.name = "Researchers: " + num.toString();
+  var num1 = new Number(0)
+  num1 = com[com.length -1]['researchers']
+  series1.name = "Researchers: " + num1.toString();
 
-  num = com[com.length -1]['non_researchers']
-  series2.name = "Non-researchers: " + num.toString();
+  var num2 = new Number(0)
+  num2 = com[com.length -1]['non_researchers']
+  series2.name = "Non-researchers: " + num2.toString();
+
+  var datas = WaffleProportion(num1, num2);
+
+  series1.data = datas[0];
+  series2.data = datas[1];
+
 })
 .catch(error => console.error(`There was an error retrieving the user list: ${error}`))
 
