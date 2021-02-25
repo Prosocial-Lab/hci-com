@@ -32,7 +32,7 @@ const BackToTopLink = styled.a<{ $show: boolean }>`
 
 const AngleDoubleUpIcon = styled(FontAwesomeIcon)`
   display: block;
-  color: #61dafb;
+  color: #98a2df;
   font-size: 1.75em;
   padding-left: 0.1rem;
   margin: 0.75rem auto auto auto;
