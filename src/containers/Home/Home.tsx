@@ -6,7 +6,11 @@ import { RoutesConfig } from '../../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureInfoConfig, FeatureInfo } from '../../config/features.config';
 import axios from 'axios'
-import { CommunityStats, IndividualStats, Researchers } from './components';
+import { CommunityStats, IndividualStats, MyTweets, Researchers } from './components';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { Tweet} from 'react-twitter-widgets'
 
 const Home: React.FC = () => {
   const featureList = useMemo<FeatureInfo[]>(() => {
@@ -33,7 +37,6 @@ const Home: React.FC = () => {
       .then(response => {
         // Update the books state
         u = response.data;
-        console.log(u);
         //setBooks(response.data)
 
         // Update loading state
@@ -47,7 +50,6 @@ const Home: React.FC = () => {
       .then(response => {
         // Update the books state
         com = response.data;
-        console.log(com);
         //setBooks(response.data)
 
         // Update loading state
@@ -60,7 +62,6 @@ const Home: React.FC = () => {
       .then(response => {
         // Update the books state
         snaps = response.data;
-        console.log(snaps);
         //setBooks(response.data)
 
         // Update loading state
@@ -168,6 +169,8 @@ const Home: React.FC = () => {
             give some context information to how the data was pulled and coded  <br/>
 
             then describe the current pool of HCI researchers volunteers, i assume, have a CTA to join the HCI researcher twitter community pool <br/>
+
+            <Tweet tweetId="841418541026877441" options={{ width: "200" }}/>
             </div>
           </div>
           <div className = 'column'>
@@ -178,6 +181,8 @@ const Home: React.FC = () => {
         <CommunityStats/>
         {/* <Researchers/> */}
         <IndividualStats/>
+        
+        <MyTweets/>
 
         <div className='columns'>
           <div className='column'>

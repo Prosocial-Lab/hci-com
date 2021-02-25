@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
-import MyWaffle from './MyWaffle';
-import MyDownstream from './MyDownstream';
 
 const Title = styled.p`
     &&& {
@@ -19,27 +17,24 @@ const Subtitle = styled.p`
     font-size: 16px;
 }`
 
-const CommunityStats = (props) => (
+const MyTweets = (props) => (
 <div>
     <Card>
-        <Title>My Statistics</Title>
+        <Title>My Tweets</Title>
             <div className='columns'>
                 <div className='column'>
-                    <Subtitle>My Followers</Subtitle>
-                    <MyWaffle/>
+                    <Subtitle>Recent Tweets</Subtitle>
 
                     
                 </div>
                 <div className='column'>
-                    <Subtitle>My Downstream Audience</Subtitle>
-                    <MyDownstream/>
+                    <Subtitle>Downstream Audience</Subtitle>
                 </div>
             </div>
     </Card>
-    <br/>
 
 </div>
 );
 
 
-export default CommunityStats;
+export default MyTweets;

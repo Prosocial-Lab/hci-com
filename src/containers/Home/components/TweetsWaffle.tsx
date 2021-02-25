@@ -10,6 +10,73 @@ import axios from 'axios'
 
 am4core.useTheme(am4themes_animated);
 
+function WaffleProportion(n: Number, m: Number, o: Number){
+  var data1 = []
+  var data2 = []
+  var data3 = []
+  var x_val = n.valueOf();
+  var y_val = m.valueOf();
+  var z_val = o.valueOf();
+  var tot = x_val + y_val + z_val;
+  var num1 = x_val / tot;
+  var num2 = y_val / tot;
+  var num3 = 1 - (num1+num2)
+
+  var s1 = (num1 * 100).toFixed();
+  var s2 = (num2 * 100).toFixed();
+  var s3 = (num3 * 100).toFixed();
+
+  var r1 = parseInt(s1);
+  var r2 = parseInt(s2);
+  var r3 = parseInt(s3);
+  console.log(r1);
+  console.log(r2);
+  console.log(r3);
+
+  var row = 1
+  var col = 1
+
+  for (let i = 0; i < r1; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data1.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1; i < r1+r2; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data2.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1+r2; i < 100; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data3.push({ x: x_str, y: y_str});
+    if(col == 10){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  return([data1, data2, data3]);
+}
+
+
+
 function TweetsWaffle(props) {
   const chart2 = useRef(null);
 
@@ -213,6 +280,13 @@ axios
   var num3 = new Number(0)
   num3 = com[com.length -1]['total_tweets'] - (num1.valueOf() + num2.valueOf())
   series3.name = "None: " + num3.toString();
+
+  var datas = WaffleProportion(num1, num2, num3);
+
+  series1.data = datas[0];
+  series2.data = datas[1];
+  series3.data = datas[2];
+
 })
 .catch(error => console.error(`There was an error retrieving the user list: ${error}`))
 
