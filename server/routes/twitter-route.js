@@ -14,6 +14,8 @@ router.get('/all', twitterRoutes.usersAll)
 
 router.get('/userWhereID/:id', twitterRoutes.userWhereID)
 
+router.get('/tweetsWhereID/:id', twitterRoutes.tweetsWhereID)
+
 router.get('/communityAll', twitterRoutes.communityAll)
 
 router.get('/snapshotsWhereID/:id', twitterRoutes.snapshotsWhereID)
