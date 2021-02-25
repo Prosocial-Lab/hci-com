@@ -42,6 +42,22 @@ const knex = require('knex')({
       })
   }
 
+  exports.tweetsWhereID = async (req, res) => {
+    // Get all users from database
+    knex
+      .select('*') // select all records
+      .from('tweets') // from 'users' table
+      .where('user_id', req.params.id)
+      .then(userData => {
+        // Send books extracted from database in response
+        res.json(userData)
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error retrieving data: ${err}` })
+      })
+  }
+
   exports.communityAll = async (req, res) => {
      // Get all users from database
      knex
