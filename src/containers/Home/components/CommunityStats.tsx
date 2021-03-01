@@ -19,15 +19,15 @@ const Title = styled.p`
 const Subtitle = styled.p`
     &&& {
     padding: 1em;
-    font-size: 20px;
+    font-size: 24px;
 }`
     
 
 const CommunityStats = (props) => (
 
 <div>
-    <Card style ={{padding:"2em"}}>
-        <Title>Community Statistics</Title>
+    <Card style ={{padding:"3em"}}>
+        <Title>A look at the HCI Research Community on Twitter</Title>
             <div className='columns'>
                 <div className='column'>
                     <Subtitle>Community Followers</Subtitle>

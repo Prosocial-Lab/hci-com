@@ -6,7 +6,7 @@ import { RoutesConfig } from '../../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureInfoConfig, FeatureInfo } from '../../config/features.config';
 import axios from 'axios'
-import { CommunityStats, IndividualStats, MyTweets, Researchers } from './components';
+import { CommunityStats, IndividualStats, } from './components';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -170,7 +170,7 @@ const Home: React.FC = () => {
 
             then describe the current pool of HCI researchers volunteers, i assume, have a CTA to join the HCI researcher twitter community pool <br/>
 
-            <Tweet tweetId="841418541026877441" options={{ width: "200" }}/>
+            {/* <Tweet tweetId="841418541026877441" options={{ width: "200" }}/> */}
             </div>
           </div>
           <div className = 'column'>
@@ -182,7 +182,7 @@ const Home: React.FC = () => {
         {/* <Researchers/> */}
         <IndividualStats/>
         
-        <MyTweets/>
+        {/* <MyTweets/> */}
 
         <div className='columns'>
           <div className='column'>

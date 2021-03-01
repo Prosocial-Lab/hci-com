@@ -8,20 +8,20 @@ import MyDownstream from './MyDownstream';
 
 const Title = styled.p`
     &&& {
-    padding: 1em;
-    font-size: 20px;
+    font-size: 30px;
     font-weight:bold;
 }`
 
 const Subtitle = styled.p`
     &&& {
-    padding: 2em;
-    font-size: 16px;
+    padding: 1em;
+    font-size: 24px;
 }`
+    
 
 const CommunityStats = (props) => (
 <div>
-    <Card>
+    <Card style ={{padding:"3em"}}>
         <Title>My Statistics</Title>
             <div className='columns'>
                 <div className='column'>

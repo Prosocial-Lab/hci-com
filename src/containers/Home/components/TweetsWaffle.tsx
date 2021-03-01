@@ -95,7 +95,7 @@ am4core.useTheme(am4themes_animated);
 let chart2 = am4core.create( "chart2div", am4charts.XYChart );
 chart2.hiddenState.properties.opacity = 0; // this creates initial fade-in
 //chart.colors.step = 2;
-chart2.colors.list = [am4core.color( "#98a2df" ), am4core.color( "#e96b6a" ), am4core.color("#a2df98")]
+chart2.colors.list = [am4core.color( "#98a2df" ), am4core.color( "#e96b6a" ), am4core.color("#7FB285")]
 
 // X axis
 let xAxis = chart2.xAxes.push( new am4charts.CategoryAxis() );
@@ -115,6 +115,7 @@ yAxis.data = [{ y: "1" }, { y: "2" }, { y: "3" }, { y: "4" }, { y: "5" }, { y: "
 
 // Legend
 chart2.legend = new am4charts.Legend();
+chart2.legend.position = "right";
 
 // Create series
 function createSeries(name) {
@@ -294,7 +295,7 @@ axios
 
   return (
     <div>
-        <div id="chart2div" style={{ width: "50%", height: "300px" }}></div>
+        <div id="chart2div" style={{ width: "80%", height: "250px" }}></div>
     </div>
     
   );
