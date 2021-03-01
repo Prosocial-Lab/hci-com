@@ -69,11 +69,11 @@ function IndividualStats(props) {
             <div className='columns'>
                 <div className='column'>
                     <Subtitle>Follower Growth</Subtitle>
-                    <LineChart data = {snaps} id = {"indline"} dv = "total_followers" />
+                    <LineChart data = {snaps} id = {"indline"} dv = "total_followers" yaxis = "Followers"/>
                 </div>
                 <div className='column'>
                     <Subtitle>Tweet Engagements</Subtitle>
-                    <LineChart data = {snaps} id = {"indline2"} dv = "total_tweets" />
+                    <LineChart data = {snaps} id = {"indline2"} dv = "total_tweets" yaxis = "Tweets"/>
                 </div>
             </div>
     </Card>

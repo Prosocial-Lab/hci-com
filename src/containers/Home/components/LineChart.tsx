@@ -99,7 +99,8 @@ dateAxis.renderer.grid.template.location = 0;
 dateAxis.renderer.minGridDistance = 50;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.title.text = "Followers"
+//valueAxis.title.text = "Followers"
+valueAxis.title.text = props.yaxis;
 
 // Create series
 var series = chart.series.push(new am4charts.LineSeries());
