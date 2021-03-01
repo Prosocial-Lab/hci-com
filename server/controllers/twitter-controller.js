@@ -31,7 +31,7 @@ const knex = require('knex')({
     knex
       .select('*') // select all records
       .from('users') // from 'users' table
-      .where('id', req.params.id)
+      .where('id_text', req.params.id)
       .then(userData => {
         // Send books extracted from database in response
         res.json(userData)
@@ -47,7 +47,24 @@ const knex = require('knex')({
     knex
       .select('*') // select all records
       .from('tweets') // from 'users' table
-      .where('user_id', req.params.id)
+      .where('user_id_text', req.params.id)
+      .then(userData => {
+        // Send books extracted from database in response
+        res.json(userData)
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error retrieving data: ${err}` })
+      })
+  }
+
+  exports.retweetsWhereUserID = async (req, res) => {
+    // Get all users from database
+    knex
+      .select('*') // select all records
+      .from('tweets') // from 'users' table
+      .where('user_id_text', req.params.id)
+      .andWhere('retweets', '>', 0)
       .then(userData => {
         // Send books extracted from database in response
         res.json(userData)
@@ -79,7 +96,7 @@ const knex = require('knex')({
     knex
       .select('*') // select all records
       .from('snapshots') // from 'users' table
-      .where('id', req.params.id)
+      .where('id_text', req.params.id)
       .limit(100) // only the first 100 rows, for debugging
       .then(userData => {
         // Send books extracted from database in response

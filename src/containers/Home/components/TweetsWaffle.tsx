@@ -10,6 +10,88 @@ import axios from 'axios'
 
 am4core.useTheme(am4themes_animated);
 
+function WaffleProportionCheat(n: Number, m: Number, o: Number){
+  var data1 = [];
+  var data2 = [];
+  var data3 = [];
+  var x_val = n.valueOf();
+  var y_val = m.valueOf();
+  var z_val = o.valueOf();
+
+  var tot = x_val + y_val + z_val;
+
+  var num_cols = parseInt(Math.sqrt((tot / 50)).toFixed());
+
+  num_cols = Math.max(3, num_cols);
+  num_cols = Math.min(30, num_cols)
+
+  var num_cells = num_cols * num_cols
+
+  var num1 = x_val / tot;
+  var num2 = y_val / tot;
+  var num3 = 1 - (num1+num2)
+
+  var s1 = (num1 * num_cells).toFixed();
+  var s2 = (num2 * num_cells).toFixed();
+  var s3 = (num3 * num_cells).toFixed();
+
+  var r1 = parseInt(s1);
+  var r2 = parseInt(s2);
+  var r3 = parseInt(s3)
+
+  var row = 1
+  var col = 1
+
+  var new_data_x = [];
+  var new_data_y = [];
+
+  for (let i = 1; i <= num_cols; i++) {
+    new_data_x.push({x : i.toString()});
+  }
+
+  for (let i = 1; i <= num_cols; i++) {
+    new_data_y.push({y : i.toString()});
+  }
+
+  for (let i = 0; i < r1; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data1.push({ x: x_str, y: y_str});
+    if(col == num_cols){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1; i < r1+r2; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data2.push({ x: x_str, y: y_str});
+    if(col == num_cols){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  for (let i = r1+r2; i < num_cells; i++) {
+    var x_str = row.toString();
+    var y_str = col.toString();
+    data3.push({ x: x_str, y: y_str});
+    if(col == num_cols){
+      row = row + 1;
+      col = 1
+    } else {
+      col = col + 1
+    }
+  }
+
+  return([data1, data2, data3, new_data_x, new_data_y]);
+}
+
 function WaffleProportion(n: Number, m: Number, o: Number){
   var data1 = []
   var data2 = []
@@ -282,7 +364,10 @@ axios
   num3 = com[com.length -1]['total_tweets'] - (num1.valueOf() + num2.valueOf())
   series3.name = "None: " + num3.toString();
 
-  var datas = WaffleProportion(num1, num2, num3);
+  var datas = WaffleProportionCheat(num1, num2, num3);
+
+  xAxis.data = datas[3];
+  yAxis.data = datas[4];
 
   series1.data = datas[0];
   series2.data = datas[1];
@@ -295,9 +380,10 @@ axios
 
   return (
     <div>
-        <div id="chart2div" style={{ width: "70%", height: "300px" }}></div>
+        <div id="chart2div" style={{ width: "100%", height: "250px" }}></div>
     </div>
     
   );
 }
 export default TweetsWaffle;
+

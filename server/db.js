@@ -9,6 +9,8 @@ const knex = require('knex')({
   client: 'sqlite3',
   connection: {
     filename: dbPath,
+    supportBigNumbers: true,
+    bigNumberStrings: true
   },
   useNullAsDefault: true
 })
