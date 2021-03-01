@@ -50,6 +50,9 @@ yAxis.data = [{ y: "1" }, { y: "2" }, { y: "3" }, { y: "4" }, { y: "5" }, { y: "
 
 // Legend
 chart.legend = new am4charts.Legend();
+chart.legend.position = "right";
+chart.legend.scrollable = true;
+chart.legend.maxWidth = 200;
 
 // Create series
 function createSeries(name) {
@@ -197,7 +200,7 @@ series2.data = [
 
   return (
     <div>
-        <div id="chartdivmyd" style={{ width: "50%", height: "300px" }}></div>
+        <div id="chartdivmyd" style={{ width: "100%", height: "250px" }}></div>
     </div>
     
   );

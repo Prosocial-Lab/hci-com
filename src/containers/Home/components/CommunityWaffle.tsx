@@ -266,7 +266,7 @@ axios
 
   return (
     <div>
-        <div id="chartdiv" style={{ width: "100%", height: "250px" }}></div>
+        <div id="chartdiv" style={{ width: "85%", height: "300px" }}></div>
     </div>
     
   );

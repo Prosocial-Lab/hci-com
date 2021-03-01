@@ -6,7 +6,7 @@ import { RoutesConfig } from '../../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FeatureInfoConfig, FeatureInfo } from '../../config/features.config';
 import axios from 'axios'
-import { CommunityStats, IndividualStats, } from './components';
+import { CommunityStats, Individual, IndividualStats, MyContributions} from './components';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -179,10 +179,10 @@ const Home: React.FC = () => {
         </div>
 
         <CommunityStats/>
-        {/* <Researchers/> */}
+        {/* <Researchers/>
         <IndividualStats/>
-        
-        {/* <MyTweets/> */}
+        <MyContributions/> */}
+        <Individual/>
 
         <div className='columns'>
           <div className='column'>

@@ -6,6 +6,8 @@ import CommunityLine from './CommunityLine';
 import CommunityEngagement from './CommunityEngagement';
 import MyWaffle from './MyWaffle';
 import MyDownstream from './MyDownstream';
+import MyContributions from './MyContributions';
+import Individual from './Individual';
 
 export{
     CommunityStats,
@@ -16,4 +18,6 @@ export{
     CommunityEngagement,
     MyWaffle,
     MyDownstream,
+    MyContributions,
+    Individual
 }

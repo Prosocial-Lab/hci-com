@@ -21,7 +21,7 @@ const Subtitle = styled.p`
 
 const CommunityStats = (props) => (
 <div>
-    <Card style ={{padding:"3em"}}>
+    <Card style ={{padding:"3em", height:"500px"}}>
         <Title>My Statistics</Title>
             <div className='columns'>
                 <div className='column'>
