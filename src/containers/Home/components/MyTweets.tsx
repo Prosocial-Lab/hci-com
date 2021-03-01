@@ -55,11 +55,13 @@ function MyTweets(props) {
         <Title>My Tweets</Title>
             <div className='columns'>
                 <div className='column'>
+                    <Title>Tweets</Title>
                     <Tweet tweetId={tweets[tweets.length - 1]['tweet_id_text']} options={{ width: "50%", cards: "hidden" }}/>
 
                     
                 </div>
                 <div className='column'>
+                    <Title>Downstream Audience</Title>
                     <WaffleChart title = {tweets[tweets.length - 1]['retweets']} divid="td1" r = {tweets[tweets.length - 1]['downstream_r']} n = {tweets[tweets.length - 1]['downstream_n']}/>
                 </div>
             </div>
