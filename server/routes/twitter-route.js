@@ -22,5 +22,9 @@ router.get('/communityAll', twitterRoutes.communityAll)
 
 router.get('/snapshotsWhereID/:id', twitterRoutes.snapshotsWhereID)
 
+router.get('/median', twitterRoutes.median)
+
+router.get('/medsnaps', twitterRoutes.medsnaps)
+
 // Export router
 module.exports = router

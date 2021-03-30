@@ -70,7 +70,7 @@ function CommunityStats(props) {
                     <LineChart data = {snaps} id = {"comline"} dv = "total_followers" yaxis = "Followers" />
                 </div>
                 <div className='column'>
-                    <Subtitle>Tweet Engagements</Subtitle>
+                    <Subtitle>Total Tweets</Subtitle>
                     <LineChart data = {snaps} id = {"tline"} dv = "total_tweets" yaxis = "Tweets"/>
                 </div>
             </div>

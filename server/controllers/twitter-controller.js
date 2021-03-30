@@ -106,4 +106,36 @@ const knex = require('knex')({
         // Send a error message in response
         res.json({ message: `There was an error retrieving data: ${err}` })
       })
-  }
+    }
+
+      exports.median = async (req, res) => {
+        // Get median stats
+        knex
+          .select('*') // select all records
+          .from('median') // from 'median' table
+          .limit(1) //
+          .then(userData => {
+            // Send books extracted from database in response
+            res.json(userData[0])
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error retrieving data: ${err}` })
+          })
+      }
+
+      exports.medsnaps = async (req, res) => {
+        // Get median stats
+        knex
+          .select('*') // select all records
+          .from('medsnaps') // from 'median' table
+          .limit(1000) //
+          .then(userData => {
+            // Send books extracted from database in response
+            res.json(userData)
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error retrieving data: ${err}` })
+          })
+      }

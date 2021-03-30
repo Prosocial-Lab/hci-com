@@ -88,8 +88,11 @@ chart.data = [ {
 var com = props.data;
 var coms:object[] = [];
 for (let i = 0; i < com.length; i++){
-  coms.push({"date": date_format(com[i]['timestamp']),
+  if (com[i][props.dv] > -1){
+    coms.push({"date": date_format(com[i]['timestamp']),
                "value": com[i][props.dv]})
+  }
+  
 }
 chart.data = coms
 

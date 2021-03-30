@@ -162,13 +162,20 @@ const Home: React.FC = () => {
             <p className='title'>HCI COM</p>
             <p className='subtitle'>Twitter Science Communication Research</p>
             <div className='content'>
-            talk about in a paragraph what the research was about <br/>
+            <p>
+            This site is intended to show the reach of the HCI research community on Twitter, as well as to provide personal analytics to help individuals learn more about their audiences and make the most of
+            the platform. The first section shows the current reach and growth of the HCI community, to show the magnitude of activity and the number of non-researchers following members of the community. 
+            <br/> 
 
-            how this research is paving way to this new “site” that aims to define and quantify the HCI community on twitter <br/>
+            As you scroll down, you can see your personal analytics. By checking out your current followers and average "downstream" audience (those exposed to your tweets via retweets), you can see learn whether
+            your tweets are reaching users outside the research community. If so, it may be worth thinking about whether you should tailor your tweets to non-research audiences. In the same section, you can see
+            how often you've linked to research papers and blog posts across various hosting sites. By promoting your work and others, you can help highlight the important work being done in our community. 
+            <br/>
 
-            give some context information to how the data was pulled and coded  <br/>
+            At the bottom of the page, you can see the downstream audiences for some of your reason tweets. If you've tweeted about research you've done, or a perspective on an important issue, or a call for 
+            participants, or anything else, you can see how many people were potentially exposed. 
 
-            then describe the current pool of HCI researchers volunteers, i assume, have a CTA to join the HCI researcher twitter community pool <br/>
+            </p>
 
             {/* <Tweet tweetId="841418541026877441" options={{ width: "200" }}/> */}
             </div>
