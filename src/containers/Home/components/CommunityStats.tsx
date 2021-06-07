@@ -9,6 +9,7 @@ import {TweetsWaffle} from "../components";
 import WaffleChart from './WaffleChart';
 import LineChart from './LineChart';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Title = styled.p`
     &&& {
@@ -18,7 +19,7 @@ const Title = styled.p`
 
 const Subtitle = styled.p`
     &&& {
-    padding: 1em;
+    padding: .05em;
     font-size: 24px;
 }`
     
@@ -49,17 +50,17 @@ function CommunityStats(props) {
       return(
 
 <div>
-    <Card style ={{padding:"3em"}}>
+    <Card style ={{padding:"2em"}}>
         <Title>A look at the HCI Research Community on Twitter</Title>
             <div className='columns'>
                 <div className='column'>
                     <Subtitle>Community Followers</Subtitle>
-                    <WaffleChart divid = "communityfollow" data = {snaps[snaps.length - 1]} r = {snaps[snaps.length - 1]['researchers']} n = {snaps[snaps.length - 1]['non_researchers']} />
+                    <WaffleChart divid = "communityfollow" vars = {[{name: "Researchers", data: snaps[snaps.length - 1]['researchers']}, {name: "Non-researchers", data: snaps[snaps.length-1]['non_researchers']}]} data = {snaps[snaps.length - 1]} r = {snaps[snaps.length - 1]['researchers']} n = {snaps[snaps.length - 1]['non_researchers']} />
                     
                 </div>
                 <div className='column'>
                     <Subtitle>Tweet Content</Subtitle>
-                    <TweetsWaffle/>
+                    <WaffleChart scheme = "tweets" divid = "communitytweets" vars = {[{name: "Paper", data: snaps[snaps.length - 1]['paper_tweets']}, {name: "Blog", data: snaps[snaps.length - 1]['blog_tweets']}, {name: "None", data: (snaps[snaps.length - 1]['total_tweets'] - (snaps[snaps.length - 1]['paper_tweets'] + snaps[snaps.length - 1]['blog_tweets']) )}]} />
                 </div>
             </div>
 

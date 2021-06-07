@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import {space, color, layout} from 'styled-system';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios'
-import { ContactlessOutlined } from '@material-ui/icons';
+import { ContactlessOutlined, LocalConvenienceStoreOutlined } from '@material-ui/icons';
 
 am4core.useTheme(am4themes_animated);
 
@@ -84,16 +84,61 @@ chart.data = [ {
 },
    ];
 
+function createSeries(field, name, op, color) {
+  var series = chart.series.push(new am4charts.LineSeries());
+  series.dataFields.valueY = field;
+  series.dataFields.dateX = "date";
+  series.tooltipText = "{valueY}";
+  series.name = name;
+  series.strokeWidth = 3;
+  series.stroke = am4core.color( color );
+  series.fill = am4core.color( color );
+  series.fillOpacity = op;
+  series.minBulletDistance = 15;
+    
+  return series;
+  }
+
+function sameDate(date, pairs, dv, def) {
+  for (let i = 0; i < pairs.length; i++) {
+    let d = pairs[i]['timestamp']
+    if (date == d){
+      return pairs[i][dv]
+    }
+  }
+
+  return def;
+
+}
+
 //Update data
 var com = props.data;
 var coms:object[] = [];
-for (let i = 0; i < com.length; i++){
-  if (com[i][props.dv] > -1){
-    coms.push({"date": date_format(com[i]['timestamp']),
-               "value": com[i][props.dv]})
+if (props.med){
+  let def = 0;
+  for (let i = 0; i < com.length; i++){
+    if (com[i][props.dv] > -1){
+      let s = com[i]['timestamp'].substring(0, 10);
+      let m = sameDate(s, props.med, props.dv, def);
+      def = m;
+      coms.push({"date": date_format(com[i]['timestamp']),
+                 "value": com[i][props.dv],
+                 "med": m})
+    }
+    
   }
-  
+  console.log(props.yaxis);
+  console.log(coms);
+} else{
+  for (let i = 0; i < com.length; i++){
+    if (com[i][props.dv] > -1){
+      coms.push({"date": date_format(com[i]['timestamp']),
+                 "value": com[i][props.dv]})
+    }
+    
+  }
 }
+
 chart.data = coms
 
 // Create axes
@@ -106,6 +151,7 @@ var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.title.text = props.yaxis;
 
 // Create series
+/*
 var series = chart.series.push(new am4charts.LineSeries());
 series.dataFields.valueY = "value";
 series.dataFields.dateX = "date";
@@ -113,6 +159,18 @@ series.tooltipText = "{valueY}";
 series.strokeWidth = 3;
 series.fillOpacity = 0.5;
 series.minBulletDistance = 15;
+*/
+let series = createSeries("value", props.yaxis, 0.5, "#0057ff");
+
+//var bullet = series.bullets.push(new am4charts.CircleBullet());
+
+if (props.med){
+  let series2 = createSeries("med", "Median", 0.25, "#ffa800");
+  valueAxis.min = 0;
+  //var bullet1 = series.bullets.push(new am4charts.CircleBullet());
+  //var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
+}
+
 
 // Add vertical scrollbar
 // chart.scrollbarY = new am4core.Scrollbar();
@@ -135,14 +193,27 @@ series.tooltip.label.minWidth = 40;
 series.tooltip.label.minHeight = 40;
 series.tooltip.label.textAlign = "middle";
 
+
+if (props.med){
+  chart.legend = new am4charts.Legend();
+  chart.legend.scrollable = true;
+  chart.legend.maxWidth = 120;
+  chart.legend.minWidth = 10;
+  chart.legend.labels.template.truncate = true;
+  chart.legend.itemContainers.template.tooltipText = "{name}";
+}
+
+
 // Make bullets grow on hover
+/*
 var bullet = series.bullets.push(new am4charts.CircleBullet());
-bullet.circle.strokeWidth = 2;
-bullet.circle.radius = 4;
+bullet.circle.strokeWidth = 1;
+bullet.circle.radius = 2;
 bullet.circle.fill = am4core.color("#fff");
 
 var bullethover = bullet.states.create("hover");
 bullethover.properties.scale = 1.3;
+*/
 
 
   }, []);

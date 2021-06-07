@@ -7,12 +7,12 @@ import MyContributions from './MyContributions';
 import IndividualStats from './IndividualStats';
 
 const Left = styled.div`
-    &&&{width: 70%;
+    &&&{width: 72%;
     }
 `
 
 const Right = styled.div`
-    &&&{width:30%;
+    &&&{width:28%;
     }
 `
 

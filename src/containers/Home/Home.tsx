@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import Button from 'react-bootstrap/Button'
 import { MetaInfo } from '../../components';
@@ -11,6 +12,12 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { Tweet} from 'react-twitter-widgets'
+
+const Space = styled.p`
+    &&& {
+    padding: 0em;
+    margin-bottom: 1.4em;
+}`
 
 const Home: React.FC = () => {
   const featureList = useMemo<FeatureInfo[]>(() => {
@@ -162,20 +169,26 @@ const Home: React.FC = () => {
             <p className='title'>HCI COM</p>
             <p className='subtitle'>Twitter Science Communication Research</p>
             <div className='content'>
-            <p>
+
+            <Space>
             This site is intended to show the reach of the HCI research community on Twitter, as well as to provide personal analytics to help individuals learn more about their audiences and make the most of
             the platform. The first section shows the current reach and growth of the HCI community, to show the magnitude of activity and the number of non-researchers following members of the community. 
             <br/> 
+            </Space>
 
+            <Space>
             As you scroll down, you can see your personal analytics. By checking out your current followers and average "downstream" audience (those exposed to your tweets via retweets), you can see learn whether
             your tweets are reaching users outside the research community. If so, it may be worth thinking about whether you should tailor your tweets to non-research audiences. In the same section, you can see
             how often you've linked to research papers and blog posts across various hosting sites. By promoting your work and others, you can help highlight the important work being done in our community. 
             <br/>
+            </Space>
 
+            <Space>
             At the bottom of the page, you can see the downstream audiences for some of your reason tweets. If you've tweeted about research you've done, or a perspective on an important issue, or a call for 
             participants, or anything else, you can see how many people were potentially exposed. 
+            </Space>
 
-            </p>
+            
 
             {/* <Tweet tweetId="841418541026877441" options={{ width: "200" }}/> */}
             </div>

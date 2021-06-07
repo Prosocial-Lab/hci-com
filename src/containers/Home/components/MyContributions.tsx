@@ -12,7 +12,15 @@ import MyDownstream from './MyDownstream';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-var id = "1293416714923683841"
+//var id = "1293416714923683841"
+//var id = "192812670"
+//var id = "802233409338675200"
+//var id = "18256350" 
+//var id = "2490180804"
+//var id = "18670940"
+//var id = "486899842"
+//var id = "238753895"
+var id = "38174427"
 
 const Title = styled.p`
     &&& {
@@ -22,7 +30,7 @@ const Title = styled.p`
 
 const Subtitle = styled.p`
     &&& {
-    padding: 0.5em;
+    padding: 0.05em;
     font-size: 24px;
 }`
 
@@ -82,32 +90,32 @@ function MyContributions(props) {
               <Subtitle>Median Tweets</Subtitle>
             <List> Blog links: {med["blog_tweets"]}</List>
             <List> Paper links: {med["paper_tweets"]}</List>
-            <List> Median daily tweets: {med["median_daily_tweets"]}</List>
-        <Subtitle>Median Community Engagement</Subtitle>
-            <List> Median likes: {med["median_likes"]}</List>
-            <List> Median retweets: {med["median_retweets"]}</List>
+            <Space> </Space>
+        <Subtitle>Median Exposure</Subtitle>
+            <List> Total blog exposure: {med["blog_nreach_aud"]}</List>
+            <List> Total paper exposure: {med["paper_nreach_aud"]}</List>
           </Popover.Content>
         </Popover>
       );
       
       const Pop = () => (
         <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-        <Button variant="outline-primary">See Median</Button>
+        <Button variant="outline-primary">Compare to Community Median</Button>
           
         </OverlayTrigger>
       );
 
       return(
 <div>
-    <Card style ={{padding:"3em", height:"600px"}}>
-        <Title>My Contributions</Title>
+    <Card style ={{padding:"2em", height:"600px"}}>
+        <Title>My Research Communication</Title>
         <Subtitle>My Tweets</Subtitle>
             <List> Blog links: {user[0]["blog_tweets"]}</List>
             <List> Paper links: {user[0]["paper_tweets"]}</List>
-            <List> Median daily tweets: {user[0]["median_daily_tweets"]}</List>
-        <Subtitle>My Community Engagement</Subtitle>
-            <List> Median likes: {user[0]["median_likes"]}</List>
-            <List> Median retweets: {user[0]["median_retweets"]}</List>
+            <Space> </Space>
+        <Subtitle>Non-researcher Exposure</Subtitle>
+            <List> Total blog exposure: {user[0]["blog_nreach_aud"]}</List>
+            <List> Total paper exposure: {user[0]["paper_nreach_aud"]}</List>
             <Space> </Space>
             <Pop/>
             

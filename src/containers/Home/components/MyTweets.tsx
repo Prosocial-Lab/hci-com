@@ -8,7 +8,15 @@ import axios from 'axios'
 import { Tweet} from 'react-twitter-widgets'
 
 //var id = "634739719"
-var id = "1293416714923683841"
+//var id = "1293416714923683841"
+//var id = "192812670"
+//var id = "802233409338675200"
+//var id = "18256350"
+//var id = "2490180804"
+//var id = "18670940"
+//var id = "486899842"
+//var id = "238753895"
+var id = "38174427"
 
 const Title = styled.p`
     &&& {
@@ -19,8 +27,16 @@ const Title = styled.p`
 
 const Subtitle = styled.p`
     &&& {
-    padding: 2em;
+    padding: .05em;
     font-size: 16px;
+}`
+
+const Retweet = styled.p`
+    &&& {
+    padding: 1em;
+    font-size: 24px;
+    font-weight:bold;
+    margin-left:80px
 }`
 
 function RenderTweet(tweets, num){
@@ -32,6 +48,7 @@ function RenderTweet(tweets, num){
     else{
         return(
             <div>
+                <Card style ={{padding:"3em"}}>
             <div className='columns'>
                 <div className='column'>
                     <Tweet tweetId={tweets[tweets.length - num]['tweet_id_text']} options={{ width: "50%", cards: "hidden" }}/>
@@ -39,9 +56,13 @@ function RenderTweet(tweets, num){
                     
                 </div>
                 <div className='column'>
-                    <WaffleChart title = {tweets[tweets.length - num]['retweets']} divid={"td".concat(num.toString())} r = {tweets[tweets.length - num]['downstream_r']} n = {tweets[tweets.length - num]['downstream_n']}/>
+                    <WaffleChart legend_pos = "right" title = {tweets[tweets.length - num]['retweets'].toString()} divid={"td".concat(num.toString())} vars = {[{name: "Researchers", data: tweets[tweets.length - num]['downstream_r']}, {name: "Non-researchers", data: tweets[tweets.length - num]['downstream_n']}]} />
+                    <Retweet>
+                    Retweets: {tweets[tweets.length - num]['retweets']}
+                    </Retweet>
                 </div>
             </div>
+            </Card>
 
             <br/>
             </div>
@@ -77,7 +98,7 @@ function MyTweets(props) {
 
       return (
         <div>
-            <Card style ={{padding:"3em"}}>
+            <Card style ={{padding:"2em"}}>
             <div className='columns'>
                 <div className='column'>
                     <Title>My Tweets</Title>

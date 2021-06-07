@@ -373,6 +373,41 @@ axios
   series2.data = datas[1];
   series3.data = datas[2];
 
+  //Custom code for legend
+  chart2.legend.itemContainers.template.togglable = false;
+
+var series_dict = {
+  [series1.name]: series1['columns']['template'],
+  [series2.name]: series2['columns']['template'],
+  [series3.name]: series3['columns']['template']
+}
+
+var keys = [series1.name, series2.name, series3.name]
+
+chart2.legend.itemContainers.template.events.on("hit", function(ev) {
+  console.log("hit")
+  let seriesColumn = ev.target.dataItem.dataContext['columns']['template'];
+  let sname = ev.target.dataItem.dataContext['name'];
+  let other_series = []
+  for (let k of keys){
+    if (sname != k){
+      other_series.push(series_dict[k]);
+    }
+  }
+  if (other_series[0].isActive){
+    other_series.map(function(e) { 
+      e.isActive = false; 
+      return e;
+    });
+  } else {
+    other_series.map(function(e) { 
+      e.isActive = true; 
+      return e;
+    });
+  }
+  seriesColumn.isActive = false;
+});
+
 })
 .catch(error => console.error(`There was an error retrieving the user list: ${error}`))
 
