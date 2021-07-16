@@ -14,6 +14,12 @@ router.get('/all', twitterRoutes.usersAll)
 
 router.get('/userWhereID/:id', twitterRoutes.userWhereID)
 
+router.get('/audienceWhereID/:id', twitterRoutes.audienceWhereID)
+
+router.get('/audienceWhereIDs/:ids', twitterRoutes.audienceWhereIDs)
+
+router.get('/audienceAll/:id', twitterRoutes.audienceAll)
+
 router.get('/tweetsWhereID/:id', twitterRoutes.tweetsWhereID)
 
 router.get('/retweetsWhereUserID/:id', twitterRoutes.retweetsWhereUserID)

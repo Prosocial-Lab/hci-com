@@ -42,6 +42,57 @@ const knex = require('knex')({
       })
   }
 
+  exports.audienceWhereID = async (req, res) => {
+    // Get all users from database
+    knex
+      .select('*') // select all records
+      .from('audience') // from 'audience' table
+      .where('id_text', req.params.id)
+      .then(userData => {
+        // Send books extracted from database in response
+        res.json(userData)
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error retrieving data: ${err}` })
+      })
+  }
+
+  exports.audienceWhereIDs = async (req, res) => {
+    // Get all users from database
+    var ids = ""
+    ids = req.params.ids + ""
+    ids = ids.split(",")
+
+    knex
+      .select('*') // select all records
+      .from('audience') // from 'audience' table
+      .whereIn('id_text', ids)
+      .then(userData => {
+        // Send books extracted from database in response
+        res.json(userData)
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error retrieving data: ${err}` })
+      })
+  }
+
+  exports.audienceAll = async (req, res) => {
+    // Get all users from database
+    knex
+      .select('*') // select all records
+      .from('audience') // from 'audience' table
+      .then(userData => {
+        // Send books extracted from database in response
+        res.json(userData)
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error retrieving data: ${err}` })
+      })
+  }
+
   exports.tweetsWhereID = async (req, res) => {
     // Get all users from database
     knex

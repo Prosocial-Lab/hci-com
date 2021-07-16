@@ -31,6 +31,15 @@ const NavBar: React.FC = () => (
         >
           <span>{RoutesConfig.About.displayName}</span>
         </NavLink>
+
+        <NavLink
+          className='navbar-item'
+          to={RoutesConfig.Tweets.path}
+          exact={RoutesConfig.Tweets.exact}
+          activeClassName={RoutesConfig.Tweets.activeClassName}
+        >
+          <span>{RoutesConfig.Tweets.displayName}</span>
+        </NavLink>
       
       </div>
     </div>

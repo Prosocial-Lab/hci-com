@@ -11,8 +11,8 @@ import axios from 'axios'
 var user_id = "634739719";
 
 am4core.useTheme(am4themes_animated);
-
-function WaffleProportionAny(ns: Number[]){
+/*
+function WaffleAny(ns: Number[], num_cols: number){
   var datas = [];
   var vals = [];
   for (let n of ns){
@@ -23,13 +23,6 @@ function WaffleProportionAny(ns: Number[]){
   
   var tot = vals.reduce((a, b) => a + b, 0)
 
-  var num_cols = parseInt(Math.sqrt((tot / 50)).toFixed());
-
-  num_cols = Math.max(3, num_cols);
-  num_cols = Math.min(30, num_cols)
-
-  var num_cells = num_cols * num_cols
-
   var nums = []
   var last = 0
 
@@ -37,16 +30,6 @@ function WaffleProportionAny(ns: Number[]){
     var num = vals[i] / tot;
     nums.push(num);
     last = num + last
-  }
-
-  var strs = []
-  for (let i = 0; i < l; i++){
-    strs.push((nums[i] * num_cells).toFixed());
-  }
-
-  var rs = []
-  for (let i = 0; i < l; i++){
-    rs.push(parseInt(strs[i]));
   }
 
   var row = 1
@@ -100,116 +83,7 @@ function WaffleProportionAny(ns: Number[]){
           data_x: new_data_x,
           data_y: new_data_y});
 }
-
-function WaffleProportionCheat(n: Number, m: Number){
-  var data1 = [];
-  var data2 = [];
-  var x_val = n.valueOf();
-  var y_val = m.valueOf();
-
-  var tot = x_val + y_val;
-
-  var num_cols = parseInt(Math.sqrt((tot / 50)).toFixed());
-
-  num_cols = Math.max(3, num_cols);
-  num_cols = Math.min(30, num_cols)
-
-  var num_cells = num_cols * num_cols
-
-  var num1 = x_val / tot;
-  var num2 = 1 - num1;
-
-  var s1 = (num1 * num_cells).toFixed();
-  var s2 = (num2 * num_cells).toFixed();
-
-  var r1 = parseInt(s1);
-  var r2 = parseInt(s2);
-
-  var row = 1
-  var col = 1
-
-  var new_data_x = [];
-  var new_data_y = [];
-
-  for (let i = 1; i <= num_cols; i++) {
-    new_data_x.push({x : i.toString()});
-  }
-
-  for (let i = 1; i <= num_cols; i++) {
-    new_data_y.push({y : i.toString()});
-  }
-
-  for (let i = 0; i < r1; i++) {
-    var x_str = row.toString();
-    var y_str = col.toString();
-    data1.push({ x: x_str, y: y_str});
-    if(col == num_cols){
-      row = row + 1;
-      col = 1
-    } else {
-      col = col + 1
-    }
-  }
-
-  for (let i = r1; i < num_cells; i++) {
-    var x_str = row.toString();
-    var y_str = col.toString();
-    data2.push({ x: x_str, y: y_str});
-    if(col == num_cols){
-      row = row + 1;
-      col = 1
-    } else {
-      col = col + 1
-    }
-  }
-
-  return([data1, data2, new_data_x, new_data_y]);
-}
-
-function WaffleProportion(n: Number, m: Number){
-  var data1 = []
-  var data2 = []
-  var x_val = n.valueOf();
-  var y_val = m.valueOf();
-  var tot = x_val + y_val;
-  var num1 = x_val / tot;
-  var num2 = tot - num1;
-
-  var s1 = num1.toFixed();
-  var s2 = num2.toFixed();
-
-  var r1 = parseInt(s1);
-  var r2 = parseInt(s2);
-
-  var row = 1
-  var col = 1
-
-  for (let i = 0; i < r1; i++) {
-    var x_str = row.toString();
-    var y_str = col.toString();
-    data1.push({ x: x_str, y: y_str});
-    if(col == 10){
-      row = row + 1;
-      col = 1
-    } else {
-      col = col + 1
-    }
-  }
-
-  for (let i = r1; i < 100; i++) {
-    var x_str = row.toString();
-    var y_str = col.toString();
-    data2.push({ x: x_str, y: y_str});
-    if(col == 10){
-      row = row + 1;
-      col = 1
-    } else {
-      col = col + 1
-    }
-  }
-
-  return([data1, data2]);
-}
+*/
 
 function WaffleChart(props) {
   const chart = useRef(null);
@@ -291,15 +165,16 @@ function createSeries(name) {
 
 let series_list = [];
 
-let vars = props.vars
+let data = props.data
 
 let nums_list = [];
 
 let denom = 0;
 
-for (let i = 0; i < vars.length; i++){
+/*
+for (let i = 0; i < data.length; i++){
   var num = new Number();
-  num = vars[i]['data'];
+  num = data[i]['data'];
   denom = denom + vars[i]['data'];
   nums_list.push(num);
 }
@@ -318,6 +193,7 @@ for (let i = 0; i < vars.length; i++){
 
 xAxis.data = datas['data_x']
 yAxis.data = datas['data_y']
+*/
 
 // Legend
 chart.legend = new am4charts.Legend();
@@ -356,7 +232,7 @@ chart.legend.itemContainers.template.togglable = false;
 var series_dict = {}
 var keys = [];
 
-for (let i = 0; i < vars.length; i++){
+for (let i = 0; i < data.length; i++){
   var key = series_list[i].name;
   series_dict[key] = series_list[i]['columns']['template'];
   keys.push(key);

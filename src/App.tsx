@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './Layout';
 import { NotFound } from './components';
-import { Home, About } from './containers';
+import { Home, About, Tweets } from './containers';
 import { withTracker } from './withTracker';
 import { Route, Switch } from 'react-router-dom';
 import { RoutesConfig } from './config/routes.config';
@@ -18,6 +18,11 @@ const App: React.FC = () => (
         path={RoutesConfig.About.path}
         component={withTracker(About)}
         exact={RoutesConfig.About.exact}
+      />
+      <Route
+        path={RoutesConfig.Tweets.path}
+        component={withTracker(Tweets)}
+        exact={RoutesConfig.Tweets.exact}
       />
       <Route 
         component={NotFound} 

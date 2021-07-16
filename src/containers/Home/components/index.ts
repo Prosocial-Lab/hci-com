@@ -7,9 +7,16 @@ import MyContributions from './MyContributions';
 import Individual from './Individual';
 import MyTweets from './MyTweets';
 import LineChart from './LineChart';
+import IconArray from './IconArray';
+import BubbleChart from './BubbleChart';
+import Trending from './Trending';
+import TopTweets from './TopTweets'
+import CustomLegend from './CustomLegend'
+import Categories from './Categories'
 
 export{
     CommunityStats,
+    CustomLegend,
     IndividualStats,
     TweetsWaffle,
     MyWaffle,
@@ -17,5 +24,10 @@ export{
     MyContributions,
     Individual,
     MyTweets,
-    LineChart
+    LineChart,
+    IconArray,
+    BubbleChart,
+    Trending,
+    TopTweets,
+    Categories
 }

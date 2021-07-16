@@ -27,7 +27,7 @@ class Individual extends React.Component{
             
             <div style={divStyle}>
                 <Left><IndividualStats /></Left>
-                <Right><MyContributions /></Right>
+                {/*<Right><MyContributions /></Right>*/}
             </div>
         );
     }

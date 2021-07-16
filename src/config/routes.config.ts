@@ -36,6 +36,17 @@ export const RoutesConfig = Object.freeze<Record<string, Route>>({
       title: 'About | HCI Community Analytics',
       description: 'About page description - limit of 160 characters (try for 150-155).'
     }
+  },
+  Tweets: {
+    path: '/tweets',
+    exact: true,
+    displayName: 'Tweets',
+    activeClassName: 'is-active',
+    icon: 'info',
+    metaInfo: {
+      title: 'Tweets | HCI Community Analytics',
+      description: 'Tweets page description - limit of 160 characters (try for 150-155).'
+    }
   }
   
 });
